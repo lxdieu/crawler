@@ -1,0 +1,250 @@
+{
+    "7/11": [
+        {
+            "player1": "Philadelphia",
+            "match": "",
+            "player2": "Utah",
+            "time": null
+        },
+        {
+            "player1": "Memphis",
+            "match": "",
+            "player2": "Portland",
+            "time": null
+        },
+        {
+            "player1": "Oklahoma City",
+            "match": "",
+            "player2": "Sacramento",
+            "time": null
+        }
+    ],
+    "8/11": [
+        {
+            "player1": "Philadelphia",
+            "match": "",
+            "player2": "Utah",
+            "time": null
+        },
+        {
+            "player1": "Memphis",
+            "match": "",
+            "player2": "Portland",
+            "time": null
+        },
+        {
+            "player1": "Oklahoma City",
+            "match": "",
+            "player2": "Sacramento",
+            "time": null
+        }
+    ],
+    "9/11": [
+        {
+            "player1": "Indiana",
+            "match": "",
+            "player2": "Detroit",
+            "time": "7:00:00 AM"
+        },
+        {
+            "player1": "New York",
+            "match": "",
+            "player2": "Orlando",
+            "time": "7:00:00 AM"
+        },
+        {
+            "player1": "Los Angeles",
+            "match": "",
+            "player2": "Boston",
+            "time": "8:00:00 AM"
+        },
+        {
+            "player1": "Miami",
+            "match": "",
+            "player2": "Phoenix",
+            "time": "9:00:00 AM"
+        },
+        {
+            "player1": "Minnesota",
+            "match": "",
+            "player2": "Golden State",
+            "time": "10:30:00 AM"
+        }
+    ],
+    "10/11": [
+        {
+            "player1": "Los Angeles",
+            "match": "",
+            "player2": "Washington",
+            "time": "7:00:00 AM"
+        },
+        {
+            "player1": "New Orleans",
+            "match": "",
+            "player2": "Toronto",
+            "time": "7:30:00 AM"
+        },
+        {
+            "player1": "Cleveland",
+            "match": "",
+            "player2": "Houston",
+            "time": "8:00:00 AM"
+        },
+        {
+            "player1": "Philadelphia",
+            "match": "",
+            "player2": "Sacramento",
+            "time": "10:00:00 AM"
+        },
+        {
+            "player1": "Oklahoma City",
+            "match": "",
+            "player2": "Denver",
+            "time": "10:30:00 AM"
+        }
+    ],
+    "11/11": [
+        {
+            "player1": "Atlanta",
+            "match": "",
+            "player2": "Detroit",
+            "time": "7:00:00 AM"
+        },
+        {
+            "player1": "Charlotte",
+            "match": "",
+            "player2": "Boston",
+            "time": "7:30:00 AM"
+        },
+        {
+            "player1": "Indiana",
+            "match": "",
+            "player2": "Chicago",
+            "time": "8:00:00 AM"
+        },
+        {
+            "player1": "LA",
+            "match": "",
+            "player2": "Oklahoma City",
+            "time": "9:00:00 AM"
+        },
+        {
+            "player1": "Milwaukee",
+            "match": "",
+            "player2": "San Antonio",
+            "time": "9:00:00 AM"
+        },
+        {
+            "player1": "Orlando",
+            "match": "",
+            "player2": "Phoenix",
+            "time": "9:00:00 AM"
+        },
+        {
+            "player1": "Miami",
+            "match": "",
+            "player2": "Utah",
+            "time": "9:00:00 AM"
+        },
+        {
+            "player1": "Brooklyn",
+            "match": "",
+            "player2": "Portland",
+            "time": "10:00:00 AM"
+        }
+    ],
+    "12/11": [
+        {
+            "player1": "Atlanta",
+            "match": "",
+            "player2": "Washington",
+            "time": "7:00:00 AM"
+        },
+        {
+            "player1": "LA",
+            "match": "",
+            "player2": "New Orleans",
+            "time": "7:00:00 AM"
+        },
+        {
+            "player1": "Sacramento",
+            "match": "",
+            "player2": "New York",
+            "time": "8:00:00 AM"
+        },
+        {
+            "player1": "Memphis",
+            "match": "",
+            "player2": "Houston",
+            "time": "8:00:00 AM"
+        },
+        {
+            "player1": "Cleveland",
+            "match": "",
+            "player2": "Dallas",
+            "time": "8:30:00 AM"
+        },
+        {
+            "player1": "Los Angeles",
+            "match": "",
+            "player2": "Milwaukee",
+            "time": "8:30:00 AM"
+        },
+        {
+            "player1": "Chicago",
+            "match": "",
+            "player2": "San Antonio",
+            "time": "8:30:00 AM"
+        },
+        {
+            "player1": "Philadelphia",
+            "match": "",
+            "player2": "Golden State",
+            "time": "8:30:00 AM"
+        },
+        {
+            "player1": "Orlando",
+            "match": "",
+            "player2": "Denver",
+            "time": "9:00:00 AM"
+        },
+        {
+            "player1": "Minnesota",
+            "match": "",
+            "player2": "Phoenix",
+            "time": "9:00:00 AM"
+        },
+        {
+            "player1": "Brooklyn",
+            "match": "",
+            "player2": "Utah",
+            "time": "9:00:00 AM"
+        },
+        {
+            "player1": "Toronto",
+            "match": "",
+            "player2": "Boston",
+            "time": "3:30:00 AM"
+        },
+        {
+            "player1": "Miami",
+            "match": "",
+            "player2": "Detroit",
+            "time": "4:00:00 AM"
+        },
+        {
+            "player1": "Houston",
+            "match": "",
+            "player2": "Indiana",
+            "time": "6:00:00 AM"
+        }
+    ],
+    "13/11": [
+        {
+            "player1": "Dallas",
+            "match": "",
+            "player2": "Oklahoma City",
+            "time": "7:00:00 AM"
+        }
+    ]
+}

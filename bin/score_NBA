@@ -1,0 +1,197 @@
+#!/usr/bin/env node
+
+var request = require('request');
+var cheerio = require('cheerio');
+var chalk = require('chalk');
+var program = require('commander');
+var async = require('async');
+var fs = require('fs');
+var path = require('path');
+
+/* Lay diem so va lich thi dau */
+function crawlScored() {
+    var date = new Date();
+    var month = new Array();
+    month[0] = "january";
+    month[1] = "february";
+    month[2] = "march";
+    month[3] = "april";
+    month[4] = "may";
+    month[5] = "june";
+    month[6] = "july";
+    month[7] = "august";
+    month[8] = "september";
+    month[9] = "october";
+    month[10] = "november";
+    month[11] = "december";
+    var n = month[date.getMonth()];
+    var url = 'https://www.basketball-reference.com/leagues/NBA_2018_games-'+n+'.html';
+    async.waterfall([
+        function (callback) {
+            request.get(url, callback);
+        },
+        function (response, body, callback) {
+            if (response.statusCode !== 200) {
+                return callback(new Error("Cannot access to: " + url));
+            }
+            return callback(null, body);
+        },
+        function (body, callback) {
+            var $ = cheerio.load(body);
+            var scores = [];
+            $("#all_schedule > div.table_outer_container >").find('table').find('tbody').find('tr').each(function (index, tr) {
+                var row = {};
+                row['date'] = $(tr).find('th').text();
+                $(tr).find('td').each(function(stt,td){
+                    if(stt == 0) row['time'] = $(td).text();
+                    if(stt == 1) row['team1'] = $(td).text();
+                    if(stt == 2) row['pts1'] = $(td).text();
+                    if(stt == 3) row['team2'] = $(td).text();
+                    if(stt == 4) row['pts2'] = $(td).text();
+                });
+                if(row['pts1'] != '' && row['pts2'] != '') scores.push(row);
+            });
+            return callback(null, scores);
+        },
+        function (scores, callback) {
+            var data = JSON.stringify(scores, null, 4);
+            var fileName = path.join(__dirname, '..', "scores_" + n + ".json");
+            fs.writeFile(fileName, data, {encoding: "utf8"}, callback);
+        }
+    ], function (error) {
+        if (error) {
+            console.log(chalk.red("Error: ") + error.message);
+        } else {
+            console.log(chalk.blue("Success!"));
+        }
+    });
+}
+
+/*Lay thong tin phan tich giai dau*/
+function crawlStats(){
+    var url = 'http://www.espn.com/nba/statistics';
+    var stats = [];
+    async.waterfall([
+        function (callback) {
+            request.get(url, callback);
+        },
+        function (response, body, callback) {
+            if (response.statusCode !== 200) {
+                return callback(new Error("Cannot access to: " + url));
+            }
+            return callback(null, body);
+        },
+        function (body, callback) {
+            var $ = cheerio.load(body);
+            $("#my-players-table > div.span-2").find('table').each(function (index, table) {
+                var tables = []
+                $(table).find('tbody').find('tr').each(function(key,tr){
+                    if(key < 6) {
+                        var row = {};
+                        $(tr).find('td').each(function(stt,td){
+                            if(key == 1){
+                                if(stt == 0) row[stt] = $(td).find('img').attr('src');
+                                else if(stt == 1) row[stt] = $(td).find('a').text();
+                                else row[stt] = $(td).text();
+                            }
+                            if(key != 1){
+                                if( stt == 0){
+                                    row[stt] = $(td).find('a').text();
+                                    if(key == 0) row[stt] = $(td).text();
+                                }
+                                else row[stt] = $(td).text();
+                            }
+                        });
+                        tables.push(row);
+                    }
+                });
+                stats.push(tables);
+            });
+            return callback(null, stats);
+        },
+        function (stats, callback) {
+            var data = JSON.stringify(stats, null, 4);
+            var fileName = path.join(__dirname, '..', "stats.json");
+            fs.writeFile(fileName, data, {encoding: "utf8"}, callback);
+        }
+    ], function (error) {
+        if (error) {
+            console.log(chalk.red("Error: ") + error.message);
+        } else {
+            console.log(chalk.blue("Success!"));
+        }
+    });
+    console.log(stats);
+}
+
+/*Lay thong tin phan tich Players*/
+/* Offense*/
+function crawl_POP_Stats(){
+    var url = 'http://www.espn.com/nba/statistics';
+    async.waterfall([
+        function (callback) {
+            request.get(url, callback);
+        },
+        function (response, body, callback) {
+            if (response.statusCode !== 200) {
+                return callback(new Error("Cannot access to: " + url));
+            }
+            return callback(null, body);
+        },
+        function (body, callback) {
+            var $ = cheerio.load(body);
+            var stats = [];
+            $("#my-players-table > div.span-2").find('table').each(function (index, table) {
+                var tables = []
+                $(table).find('tbody').find('tr').each(function(key,tr){
+                    if(key < 6) {
+                        var row = {};
+                        $(tr).find('td').each(function(stt,td){
+                            if(key == 0 && stt == 0) row[stt] = $(td).text();
+                            if(key == 1){
+                                if(stt == 0) row[stt] = $(td).find('img').attr('src');
+                                else if(stt == 1) row[stt] = $(td).find('a').text();
+                                else row[stt] = $(td).text();
+                            }
+                            if(key != 1){
+                                if( stt == 0) row[stt] = $(td).find('a').text();
+                                else row[stt] = $(td).text();
+                            }
+                        });
+                        tables.push(row);
+                    }
+                });
+                stats.push(tables);
+            });
+            return callback(null, stats);
+        },
+        function (stats, callback) {
+            var data = JSON.stringify(stats, null, 4);
+            var fileName = path.join(__dirname, '..', "stats.json");
+            fs.writeFile(fileName, data, {encoding: "utf8"}, callback);
+        }
+    ], function (error) {
+        if (error) {
+            console.log(chalk.red("Error: ") + error.message);
+        } else {
+            console.log(chalk.blue("Success!"));
+        }
+    });
+}
+program
+    .command('scored<>')
+    .alias('s')
+    .description('Crawler scored NBA')
+    .action(function () {
+        return crawlScored();
+    })
+
+program
+    .command('stats<>')
+    .alias('st')
+    .description('Crawler Stast NBA')
+    .action(function () {
+        return crawlStats();
+    })
+
+program.parse(process.argv);

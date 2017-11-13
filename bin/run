@@ -1,0 +1,264 @@
+#!/usr/bin/env node
+
+var request = require('request');
+var cheerio = require('cheerio');
+var chalk = require('chalk');
+var program = require('commander');
+var async = require('async');
+var fs = require('fs');
+var path = require('path');
+
+var leaguesForFixture = {
+    "eng": "http://www.espn.co.uk/football/fixtures/_/league/eng.1",
+    "ita": "http://www.espn.co.uk/football/fixtures/_/league/ita.1",
+    "ita_copa": "http://www.espn.co.uk/football/fixtures/_/league/ita.coppa_italia",
+    "esp": "http://www.espn.co.uk/football/fixtures/_/league/esp.1",
+    "esp_copa": "http://www.espn.co.uk/football/fixtures/_/league/esp.copa_del_rey",
+    "uefa": "http://www.espn.co.uk/football/fixtures/_/league/uefa.champions",
+    "europa": "http://www.espn.co.uk/football/fixtures/_/league/uefa.europa",
+    "ger": "http://www.espn.co.uk/football/fixtures/_/league/ger.1",
+    "ger_dfb": "http://www.espn.co.uk/football/fixtures/_/league/ger.dfb_pokal",
+    "seriea": "http://www.espn.co.uk/football/fixtures/_/league/ita.1",
+    "worldcup_uefa": "http://www.espn.co.uk/football/fixtures/_/league/fifa.worldq.uefa",
+    "worldcup_conmebol": "http://www.espn.co.uk/football/fixtures/_/league/fifa.worldq.conmebol",
+    "worldcup_concacaf": "http://www.espn.co.uk/football/fixtures/_/league/fifa.worldq.concacaf",
+    "worldcup_caf": "http://www.espn.co.uk/football/fixtures/_/league/fifa.worldq.caf",
+    "worldcup_afc": "http://www.espn.co.uk/football/fixtures/_/league/fifa.worldq.afc",
+    "worldcup_ofc": "http://www.espn.co.uk/football/fixtures/_/league/fifa.worldq.ofc"
+};
+
+var leaguesForTable = {
+    "eng": "http://www.espn.co.uk/football/table/_/league/eng.1",
+    "ger": "http://www.espn.co.uk/football/table/_/league/ger.1",
+    "league1": "http://www.espn.co.uk/football/table/_/league/fra.1",
+    "laliga" : "http://www.espn.co.uk/football/table/_/league/esp.1",
+    "seriea": "http://www.espn.co.uk/football/table/_/league/ita.1",
+    "worldcup_uefa": "http://www.espn.co.uk/football/table/_/league/fifa.worldq.uefa",
+    "worldcup_conmebol": "http://www.espn.co.uk/football/table/_/league/fifa.worldq.conmebol",
+    "worldcup_concacaf": "http://www.espn.co.uk/football/table/_/league/fifa.worldq.concacaf",
+    "worldcup_caf": "http://www.espn.co.uk/football/table/_/league/fifa.worldq.caf",
+    "worldcup_afc": "http://www.espn.co.uk/football/table/_/league/fifa.worldq.afc",
+    "worldcup_ofc": "http://www.espn.co.uk/football/table/_/league/fifa.worldq.ofc"
+};
+
+function crawlFixture(league) {
+    var url = leaguesForFixture[league].toString();
+    async.waterfall([
+        function (callback) {
+            request.get(url, callback);
+        },
+        function (response, body, callback) {
+            if (response.statusCode !== 200) {
+                return callback(new Error("Cannot access to: " + url));
+            }
+            return callback(null, body);
+        },
+        function (body, callback) {
+            var $ = cheerio.load(body);
+            var fixtures = [];
+            $("#sched-container > div > table").each(function (index, table) {
+                var fixture = [];
+                $(table).find("tr").each(function (itr, tr) {
+                    if (itr > 0) {
+                        var row = {};
+                        $(tr).find("td").each(function (itd, td) {
+                            if (itd === 0) {
+                                row['player1'] = $(td).find("a > span").text();
+                                row['match'] = $(td).find("span > a").text();
+                            } else if (itd === 1) {
+                                row['player2'] = $(td).find("a > span").text();
+                            } else if (itd === 2) {
+                                row['time'] = null;
+                                if ($(td).attr("data-behavior") === "date_time") {
+                                    var date = new Date($(td).attr("data-date"));
+                                    row['time'] = date.toLocaleTimeString();
+                                }
+                            }
+                        });
+                        fixture.push(row);
+                    }
+                });
+                fixtures.push(fixture);
+            });
+            return callback(null, $, fixtures);
+        },
+        function ($, fixtures, callback) {
+            var times = [];
+            var months = {
+                "January": "01",
+                "February": "02",
+                "March": "03",
+                "April": "04",
+                "May": "05",
+                "June": "06",
+                "July": "07",
+                "August": "08",
+                "September": "09",
+                "October": "10",
+                "November": "11",
+                "December": "12"
+            };
+            $("#sched-container > h2").each(function (index, h2) {
+                var date = $(h2).text().replace(/,/g, '').split(' ');
+                var month = months[date[1]];
+                var day = date[2];
+                times.push(day + "/" + month);
+            });
+            var result = {};
+            times.forEach(function (time, index) {
+                result[time] = fixtures[index];
+            });
+            return callback(null, result);
+        },
+        function (result, callback) {
+            var data = JSON.stringify(result, null, 4);
+            var fileName = path.join(__dirname, '..', "fixture_" + league + ".json");
+            fs.writeFile(fileName, data, {encoding: "utf8"}, callback);
+        }
+    ], function (error) {
+        if (error) {
+            console.log(chalk.red("Error: ") + error.message);
+        } else {
+            console.log(chalk.blue("Success!"));
+        }
+    });
+}
+
+function crawlTable(league) {
+    var url = leaguesForTable[league].toString();
+    async.waterfall([
+        function (callback) {
+            request.get(url, callback);
+        },
+        function (response, body, callback) {
+            if (response.statusCode !== 200) {
+                return callback(new Error("Cannot access to: " + url));
+            }
+            return callback(null, body);
+        },
+        function (body, callback) {
+            var $ = cheerio.load(body);
+            var table = [];
+            // tbody
+            var selectorTbody = "#main-container > div > section > div > div > div.responsive-table-wrap > table > tbody";
+            $(selectorTbody).each(function (itbody, tbody) {
+                var row ={};
+                table.push(row);
+                row['league_title'] = $(this).prev('thead').find('th').first().text();
+                // loop tbody
+                var selectorTr = $(tbody).find('tr');
+                $(selectorTr).each(function (itr, tr) {
+                    var row = {};
+                    $(tr).find("td").each(function (itd, td) {
+                        switch (itd) {
+                            case 0:
+                                row['order'] = $(td).find('span').first().text();
+                                row['player'] = $(td).find('a > span > span').text();
+                                break;
+                            case 1:
+                                row['gp'] = $(td).text();
+                                break;
+                            case 2:
+                                row['w'] = $(td).text();
+                                break;
+                            case 3:
+                                row['d'] = $(td).text();
+                                break;
+                            case 4:
+                                row['l'] = $(td).text();
+                                break;
+                            case 5:
+                                row['f'] = $(td).text();
+                                break;
+                            case 6:
+                                row['a'] = $(td).text();
+                                break;
+                            case 7:
+                                row['gd'] = $(td).text();
+                                break;
+                            case 8:
+                                row['p'] = $(td).text();
+                                break;
+                        }
+                    });
+                    table.push(row);
+                });
+            });
+            return callback(null, table);
+        },
+        function (result, callback) {
+            var data = JSON.stringify(result, null, 4);
+            var fileName = path.join(__dirname, '..', "table_" + league + ".json");
+            fs.writeFile(fileName, data, {encoding: "utf8"}, callback);
+        }
+    ], function (error) {
+        if (error) {
+            console.log(chalk.red("Error: ") + error.message);
+        } else {
+            console.log(chalk.blue("Success!"));
+        }
+    });
+}
+
+function showHelpForCrawlingFixture() {
+    console.log("<league> should be:");
+    console.log(chalk.blue('* eng') + "\t\t=>\t" + chalk.yellow("English Premier League"));
+    console.log(chalk.blue('* ita') + "\t\t=>\t" + chalk.yellow("Italian Serie A"));
+    console.log(chalk.blue('* ita_copa') + "\t\t=>\t" + chalk.yellow("Italian Copa"));
+    console.log(chalk.blue('* esp') + "\t\t=>\t" + chalk.yellow("Spanish Primera División"));
+    console.log(chalk.blue('* esp_copa') + "\t\t=>\t" + chalk.yellow("Spanish Copa del Rey"));
+    console.log(chalk.blue('* uefa') + "\t\t=>\t" + chalk.yellow("UEFA Champions League"));
+    console.log(chalk.blue('* europa') + "\t=>\t" + chalk.yellow("UEFA Europa League"));
+    console.log(chalk.blue('* ger') + "\t\t=>\t" + chalk.yellow("German Bundesliga"));
+    console.log(chalk.blue('* ger_dfb') + "\t\t=>\t" + chalk.yellow("German DFB Pokal"));
+    console.log(chalk.blue('* seriea') + "\t\t=>\t" + chalk.yellow("Italian Serie A"));
+    console.log(chalk.blue('* worldcup_uefa') + "\t\t=>\t" + chalk.yellow("World Cup Qualifying - UEFA"));
+    console.log(chalk.blue('* worldcup_conmebol') + "\t\t=>\t" + chalk.yellow("World Cup Qualifying - CONMEBOL"));
+    console.log(chalk.blue('* worldcup_concacaf') + "\t=>\t" + chalk.yellow("World Cup Qualifying - CONCACAF "));
+    console.log(chalk.blue('* worldcup_caf') + "\t\t=>\t" + chalk.yellow("World Cup Qualifying - CAF"));
+    console.log(chalk.blue('* worldcup_afc') + "\t\t=>\t" + chalk.yellow("World Cup Qualifying - AFC "));
+    console.log(chalk.blue('* worldcup_ofc') + "\t\t=>\t" + chalk.yellow("World Cup Qualifying - OFC"));
+
+    console.log();
+}
+
+function showHelpForCrawlingTable() {
+    console.log("<league> should be:");
+    console.log(chalk.blue('* eng') + "\t\t=>\t" + chalk.yellow("English Premier League"));
+    console.log(chalk.blue('* ger') + "\t\t=>\t" + chalk.yellow("German Bundesliga"));
+    console.log(chalk.blue('* seriea') + "\t=>\t" + chalk.yellow("Italian Serie A"));
+    console.log(chalk.blue('* worldcup_uefa') + "\t=>\t" + chalk.yellow("World Cup Qualifying - UEFA"));
+    console.log(chalk.blue('* worldcup_conmebol') + "\t=>\t" + chalk.yellow("World Cup Qualifying - CONMEBOL"));
+    console.log(chalk.blue('* worldcup_concacaf') + "\t=>\t" + chalk.yellow("World Cup Qualifying - CONCACAF "));
+    console.log(chalk.blue('* worldcup_caf') + "\t=>\t" + chalk.yellow("World Cup Qualifying - CAF"));
+    console.log(chalk.blue('* worldcup_afc') + "\t=>\t" + chalk.yellow("World Cup Qualifying - AFC "));
+    console.log(chalk.blue('* worldcup_ofc') + "\t=>\t" + chalk.yellow("World Cup Qualifying - OFC"));
+
+    console.log();
+}
+
+program
+    .command('fixtures <league>')
+    .alias('f')
+    .description('Crawler fixtures by league')
+    .action(function (league) {
+        if (!leaguesForFixture[league]) {
+            return showHelpForCrawlingFixture();
+        }
+        return crawlFixture(league);
+    })
+    .on('--help', showHelpForCrawlingFixture);
+
+program
+    .command('tables <league>')
+    .alias('t')
+    .description('Crawler tables by league')
+    .action(function (league) {
+        if (!leaguesForTable[league]) {
+            return showHelpForCrawlingTable();
+        }
+        return crawlTable(league);
+    })
+    .on('--help', showHelpForCrawlingTable);
+
+program.parse(process.argv);

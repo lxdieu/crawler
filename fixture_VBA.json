@@ -1,0 +1,461 @@
+[
+    {
+        "time": "19:00",
+        "date": "09/5/2017",
+        "datetime": "19:00 09/5/2017",
+        "team1": "Thang Long Warriors",
+        "score1": "96",
+        "score2": "65",
+        "team2": "Danang Dragons"
+    },
+    {
+        "time": "19:00",
+        "date": "09/7/2017",
+        "datetime": "19:00 09/7/2017",
+        "team1": "Cantho Catfish",
+        "score1": "83",
+        "score2": "86",
+        "team2": "Hanoi Buffaloes"
+    },
+    {
+        "time": "17:00",
+        "date": "09/9/2017",
+        "datetime": "17:00 09/9/2017",
+        "team1": "Danang Dragons",
+        "score1": "74",
+        "score2": "77",
+        "team2": "Hochiminh City Wings"
+    },
+    {
+        "time": "17:00",
+        "date": "09/9/2017",
+        "datetime": "17:00 09/9/2017",
+        "team1": "Saigon Heat",
+        "score1": "86",
+        "score2": "78",
+        "team2": "Thang Long Warriors"
+    },
+    {
+        "time": "17:00",
+        "date": "09/10/2017",
+        "datetime": "17:00 09/10/2017",
+        "team1": "Hanoi Buffaloes",
+        "score1": "71",
+        "score2": "79",
+        "team2": "Cantho Catfish"
+    },
+    {
+        "time": "19:00",
+        "date": "09/12/2017",
+        "datetime": "19:00 09/12/2017",
+        "team1": "Hochiminh City Wings",
+        "score1": "71",
+        "score2": "79",
+        "team2": "Thang Long Warriors"
+    },
+    {
+        "time": "19:00",
+        "date": "09/14/2017",
+        "datetime": "19:00 09/14/2017",
+        "team1": "Cantho Catfish",
+        "score1": "76",
+        "score2": "68",
+        "team2": "Danang Dragons"
+    },
+    {
+        "time": "17:00",
+        "date": "09/16/2017",
+        "datetime": "17:00 09/16/2017",
+        "team1": "Hanoi Buffaloes",
+        "score1": "57",
+        "score2": "55",
+        "team2": "Hochiminh City Wings"
+    },
+    {
+        "time": "17:00",
+        "date": "09/16/2017",
+        "datetime": "17:00 09/16/2017",
+        "team1": "Saigon Heat",
+        "score1": "72",
+        "score2": "59",
+        "team2": "Cantho Catfish"
+    },
+    {
+        "time": "17:00",
+        "date": "09/17/2017",
+        "datetime": "17:00 09/17/2017",
+        "team1": "Danang Dragons",
+        "score1": "64",
+        "score2": "79",
+        "team2": "Thang Long Warriors"
+    },
+    {
+        "time": "19:00",
+        "date": "09/19/2017",
+        "datetime": "19:00 09/19/2017",
+        "team1": "Hochiminh City Wings",
+        "score1": "59",
+        "score2": "67",
+        "team2": "Saigon Heat"
+    },
+    {
+        "time": "19:00",
+        "date": "09/21/2017",
+        "datetime": "19:00 09/21/2017",
+        "team1": "Hanoi Buffaloes",
+        "score1": "66",
+        "score2": "71",
+        "team2": "Thang Long Warriors"
+    },
+    {
+        "time": "17:00",
+        "date": "09/23/2017",
+        "datetime": "17:00 09/23/2017",
+        "team1": "Danang Dragons",
+        "score1": "74",
+        "score2": "93",
+        "team2": "Cantho Catfish"
+    },
+    {
+        "time": "17:00",
+        "date": "09/24/2017",
+        "datetime": "17:00 09/24/2017",
+        "team1": "Thang Long Warriors",
+        "score1": "56",
+        "score2": "67",
+        "team2": "Hochiminh City Wings"
+    },
+    {
+        "time": "17:00",
+        "date": "09/24/2017",
+        "datetime": "17:00 09/24/2017",
+        "team1": "Saigon Heat",
+        "score1": "84",
+        "score2": "77",
+        "team2": "Hanoi Buffaloes"
+    },
+    {
+        "time": "19:00",
+        "date": "09/26/2017",
+        "datetime": "19:00 09/26/2017",
+        "team1": "Cantho Catfish",
+        "score1": "85",
+        "score2": "71",
+        "team2": "Hochiminh City Wings"
+    },
+    {
+        "time": "19:00",
+        "date": "09/28/2017",
+        "datetime": "19:00 09/28/2017",
+        "team1": "Hanoi Buffaloes",
+        "score1": "71",
+        "score2": "72",
+        "team2": "Saigon Heat"
+    },
+    {
+        "time": "17:00",
+        "date": "09/30/2017",
+        "datetime": "17:00 09/30/2017",
+        "team1": "Danang Dragons",
+        "score1": "58",
+        "score2": "67",
+        "team2": "Hanoi Buffaloes"
+    },
+    {
+        "time": "17:00",
+        "date": "09/30/2017",
+        "datetime": "17:00 09/30/2017",
+        "team1": "Saigon Heat",
+        "score1": "74",
+        "score2": "79",
+        "team2": "Hochiminh City Wings"
+    },
+    {
+        "time": "17:00",
+        "date": "10/1/2017",
+        "datetime": "17:00 10/1/2017",
+        "team1": "Thang Long Warriors",
+        "score1": "79",
+        "score2": "67",
+        "team2": "Cantho Catfish"
+    },
+    {
+        "time": "19:00",
+        "date": "10/3/2017",
+        "datetime": "19:00 10/3/2017",
+        "team1": "Hochiminh City Wings",
+        "score1": "74",
+        "score2": "81",
+        "team2": "Hanoi Buffaloes"
+    },
+    {
+        "time": "19:00",
+        "date": "10/5/2017",
+        "datetime": "19:00 10/5/2017",
+        "team1": "Cantho Catfish",
+        "score1": "72",
+        "score2": "74",
+        "team2": "Thang Long Warriors"
+    },
+    {
+        "time": "17:00",
+        "date": "10/7/2017",
+        "datetime": "17:00 10/7/2017",
+        "team1": "Thang Long Warriors",
+        "score1": "71",
+        "score2": "61",
+        "team2": "Hanoi Buffaloes"
+    },
+    {
+        "time": "17:00",
+        "date": "10/7/2017",
+        "datetime": "17:00 10/7/2017",
+        "team1": "Saigon Heat",
+        "score1": "62",
+        "score2": "78",
+        "team2": "Cantho Catfish"
+    },
+    {
+        "time": "17:00",
+        "date": "10/8/2017",
+        "datetime": "17:00 10/8/2017",
+        "team1": "Danang Dragons",
+        "score1": "63",
+        "score2": "60",
+        "team2": "Hochiminh City Wings"
+    },
+    {
+        "time": "19:00",
+        "date": "10/10/2017",
+        "datetime": "19:00 10/10/2017",
+        "team1": "Hanoi Buffaloes",
+        "score1": "66",
+        "score2": "60",
+        "team2": "Danang Dragons"
+    },
+    {
+        "time": "19:00",
+        "date": "10/10/2017",
+        "datetime": "19:00 10/10/2017",
+        "team1": "Hochiminh City Wings",
+        "score1": "63",
+        "score2": "102",
+        "team2": "Saigon Heat"
+    },
+    {
+        "time": "19:00",
+        "date": "10/12/2017",
+        "datetime": "19:00 10/12/2017",
+        "team1": "Cantho Catfish",
+        "score1": "105",
+        "score2": "99",
+        "team2": "Danang Dragons"
+    },
+    {
+        "time": "17:00",
+        "date": "10/14/2017",
+        "datetime": "17:00 10/14/2017",
+        "team1": "Thang Long Warriors",
+        "score1": "87",
+        "score2": "90",
+        "team2": "Cantho Catfish"
+    },
+    {
+        "time": "17:00",
+        "date": "10/14/2017",
+        "datetime": "17:00 10/14/2017",
+        "team1": "Saigon Heat",
+        "score1": "64",
+        "score2": "72",
+        "team2": "Hanoi Buffaloes"
+    },
+    {
+        "time": "19:00",
+        "date": "10/17/2017",
+        "datetime": "19:00 10/17/2017",
+        "team1": "Hanoi Buffaloes",
+        "score1": "75",
+        "score2": "77",
+        "team2": "Cantho Catfish"
+    },
+    {
+        "time": "19:00",
+        "date": "10/17/2017",
+        "datetime": "19:00 10/17/2017",
+        "team1": "Hochiminh City Wings",
+        "score1": "84",
+        "score2": "63",
+        "team2": "Danang Dragons"
+    },
+    {
+        "time": "19:00",
+        "date": "10/19/2017",
+        "datetime": "19:00 10/19/2017",
+        "team1": "Danang Dragons",
+        "score1": "82",
+        "score2": "72",
+        "team2": "Saigon Heat"
+    },
+    {
+        "time": "17:00",
+        "date": "10/22/2017",
+        "datetime": "17:00 10/22/2017",
+        "team1": "Saigon Heat",
+        "score1": "93",
+        "score2": "78",
+        "team2": "Danang Dragons"
+    },
+    {
+        "time": "17:00",
+        "date": "10/22/2017",
+        "datetime": "17:00 10/22/2017",
+        "team1": "Thang Long Warriors",
+        "score1": "80",
+        "score2": "69",
+        "team2": "Hanoi Buffaloes"
+    },
+    {
+        "time": "19:00",
+        "date": "10/24/2017",
+        "datetime": "19:00 10/24/2017",
+        "team1": "Hochiminh City Wings",
+        "score1": "85",
+        "score2": "67",
+        "team2": "Cantho Catfish"
+    },
+    {
+        "time": "19:00",
+        "date": "10/26/2017",
+        "datetime": "19:00 10/26/2017",
+        "team1": "Danang Dragons",
+        "score1": "72",
+        "score2": "82",
+        "team2": "Thang Long Warriors"
+    },
+    {
+        "time": "19:00",
+        "date": "10/26/2017",
+        "datetime": "19:00 10/26/2017",
+        "team1": "Cantho Catfish",
+        "score1": "80",
+        "score2": "85",
+        "team2": "Saigon Heat"
+    },
+    {
+        "time": "17:00",
+        "date": "10/28/2017",
+        "datetime": "17:00 10/28/2017",
+        "team1": "Hanoi Buffaloes",
+        "score1": "65",
+        "score2": "60",
+        "team2": "Hochiminh City Wings"
+    },
+    {
+        "time": "17:00",
+        "date": "10/29/2017",
+        "datetime": "17:00 10/29/2017",
+        "team1": "Saigon Heat",
+        "score1": "69",
+        "score2": "75",
+        "team2": "Thang Long Warriors"
+    },
+    {
+        "time": "19:00",
+        "date": "10/31/2017",
+        "datetime": "19:00 10/31/2017",
+        "team1": "Danang Dragons",
+        "score1": "64",
+        "score2": "79",
+        "team2": "Saigon Heat"
+    },
+    {
+        "time": "19:00",
+        "date": "10/31/2017",
+        "datetime": "19:00 10/31/2017",
+        "team1": "Cantho Catfish",
+        "score1": "99",
+        "score2": "63",
+        "team2": "Hochiminh City Wings"
+    },
+    {
+        "time": "19:00",
+        "date": "11/2/2017",
+        "datetime": "19:00 11/2/2017",
+        "team1": "Hochiminh City Wings",
+        "score1": "73",
+        "score2": "84",
+        "team2": "Thang Long Warriors"
+    },
+    {
+        "time": "17:00",
+        "date": "11/4/2017",
+        "datetime": "17:00 11/4/2017",
+        "team1": "Hanoi Buffaloes",
+        "score1": "83",
+        "score2": "61",
+        "team2": "Danang Dragons"
+    },
+    {
+        "time": "17:00",
+        "date": "11/5/2017",
+        "datetime": "17:00 11/5/2017",
+        "team1": "Thang Long Warriors",
+        "score1": "69",
+        "score2": "66",
+        "team2": "Saigon Heat"
+    },
+    {
+        "time": "19:00",
+        "date": "11/8/2017",
+        "datetime": "19:00 11/8/2017",
+        "team1": "Saigon Heat",
+        "score1": " ",
+        "score2": " ",
+        "team2": "Cantho Catfish"
+    },
+    {
+        "time": "19:00",
+        "date": "11/9/2017",
+        "datetime": "19:00 11/9/2017",
+        "team1": "Thang Long Warriors",
+        "score1": " ",
+        "score2": " ",
+        "team2": "Hanoi Buffaloes"
+    },
+    {
+        "time": "17:00",
+        "date": "11/11/2017",
+        "datetime": "17:00 11/11/2017",
+        "team1": "Cantho Catfish",
+        "score1": " ",
+        "score2": " ",
+        "team2": "Saigon Heat"
+    },
+    {
+        "time": "12:00",
+        "date": "11/12/2017",
+        "datetime": "12:00 11/12/2017",
+        "team1": "Hanoi Buffaloes",
+        "score1": " ",
+        "score2": " ",
+        "team2": "Thang Long Warriors"
+    },
+    {
+        "time": "19:00",
+        "date": "11/14/2017",
+        "datetime": "19:00 11/14/2017",
+        "team1": "Saigon Heat",
+        "score1": " ",
+        "score2": " ",
+        "team2": "Cantho Catfish"
+    },
+    {
+        "time": "12:00",
+        "date": "11/16/2017",
+        "datetime": "12:00 11/16/2017",
+        "team1": "Thang Long Warriors",
+        "score1": " ",
+        "score2": " ",
+        "team2": "Hanoi Buffaloes"
+    }
+]

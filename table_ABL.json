@@ -1,0 +1,29 @@
+[
+    {
+        "name1": "Singapore Slingers",
+        "logo1": "http:aseanbasketballleague.com/wp-content/uploads/2017/07/slingers-128x128.png",
+        "name2": "Hong Kong Eastern Basketball Team",
+        "logo2": "http:aseanbasketballleague.com/wp-content/uploads/2017/08/300x300easternOptimized-128x128.png",
+        "date": "04/23/2017",
+        "time": "16:00:07",
+        "datetime": "2017-04-23 16:00:07"
+    },
+    {
+        "name1": "Singapore Slingers",
+        "logo1": "http:aseanbasketballleague.com/wp-content/uploads/2017/07/slingers-128x128.png",
+        "name2": "Hong Kong Eastern Basketball Team",
+        "logo2": "http:aseanbasketballleague.com/wp-content/uploads/2017/08/300x300easternOptimized-128x128.png",
+        "date": "04/21/2017",
+        "time": "16:00:03",
+        "datetime": "2017-04-21 16:00:03"
+    },
+    {
+        "name1": "Saigon Heat",
+        "logo1": "http:aseanbasketballleague.com/wp-content/uploads/2017/08/300x300-saigon-heat-128x128.png",
+        "name2": "Singapore Slingers",
+        "logo2": "http:aseanbasketballleague.com/wp-content/uploads/2017/07/slingers-128x128.png",
+        "date": "03/12/2016",
+        "time": "18:00:58",
+        "datetime": "2016-03-12 18:00:58"
+    }
+]
